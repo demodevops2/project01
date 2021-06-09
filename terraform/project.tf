@@ -136,7 +136,7 @@ resource "aws_alb_listener" "listener_http" {
   }
 }
 
-
+# Crate LC for autoscaling group
 resource "aws_launch_configuration" "web" {
   name_prefix = "web-"
 
@@ -154,6 +154,7 @@ resource "aws_launch_configuration" "web" {
   }
 }
 
+# Create a autoscaling group
 resource "aws_autoscaling_group" "web" {
   name = "${aws_launch_configuration.web.name}-asg"
   min_size             = 1
